@@ -46,7 +46,17 @@ if ($id == '' || $token == '') {
                 }
                 $dir->close();
             }
+
+            //filtrado por caracteristicas
+            $sqlCaracter = $con->prepare("SELECT DISTINCT(det.id_caracteristica) AS idCat, cat.caracteristica FROM det_prod_caracter AS det INNER JOIN caracteristicas AS cat ON det.id_caracteristica=cat.id WHERE det.id_producto=?");
+
+            $sqlCaracter->execute([$id]);
+
+        } else {
+            echo 'Error al procesar la peticion';
+            exit;
         }
+
     } else {
         echo 'Error al procesar la peticion';
         exit;
@@ -108,7 +118,7 @@ if ($id == '' || $token == '') {
                             <a href="#" class="nav-link">Contacto</a>
                         </li>
                     </ul>
-                    <a href="carrito.php" class="btn btn-primary">
+                    <a href="checkout.php" class="btn btn-primary">
                         Carrito <span id="num_cart" class="badge bg-secondary"><?php echo $num_cart; ?></span>
                     </a>
                 </div>
@@ -170,11 +180,34 @@ if ($id == '' || $token == '') {
                     <p class="lead">
                         <?php echo $descripcion; ?>
                     </p>
+
+                    <div class="col-3 my-3">
+                        <?php
+                        while ($row_cat = $sqlCaracter->fetch(PDO::FETCH_ASSOC)) {
+                            $idCat = $row_cat['idCat'];
+                            echo $row_cat['caracteristica'] . ": ";
+
+                            echo "<select class='form-select' id='cat_" . $idCat . "'>";
+
+                            $sqlDet = $con->prepare("SELECT id, valor, stock FROM det_prod_caracter WHERE id_producto=? AND id_caracteristica=?");
+                            $sqlDet->execute([$id, $idCat]);
+                            while ($row_det = $sqlDet->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<option id='" . $row_det['id'] . "'>" . $row_det['valor'] . "</option>";
+                            }
+                            echo "</select>";
+                        }
+                        ?>
+                    </div>
+
+
+                    <div class="col-3 my-3">
+                        Cantidad: <input class="form-control" id="cantidad" name="cantidad" type="number" min="1"
+                            max="10" value="1">
+                    </div>
+
                     <div class="d-grid gap-3 col-10 mx-auto">
                         <buton class="btn btn-primary" type="button">Comprar Ahora</buton>
-                        <buton class="btn btn-outline-primary" type="button"
-                            onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>')">Agregar al carrito
-                        </buton>
+                        <buton class="btn btn-outline-primary" id="btnAgregar" type="button">Agregar al carrito</buton>
                     </div>
                 </div>
             </div>
@@ -190,10 +223,16 @@ if ($id == '' || $token == '') {
 
     <!--ajax con api fitch-->
     <script>
-        function addProducto(id, token) {
+
+        let btnAgregar = document.getElementById("btnAgregar")
+        let inputCantidad = document.getElementById("cantidad").value
+        btnAgregar.onclick = addProducto(<?php echo $id; ?>, inputCantidad, <?php echo $token_tmp; ?>)
+
+        function addProducto(id, cantidad, token) {
             let url = 'clases/carrito.php'
             let formData = new FormData()
             formData.append('id', id)
+            formData.append('cantidad', cantidad)
             formData.append('token', token)
 
             fetch(url, {
