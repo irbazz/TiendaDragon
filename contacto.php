@@ -39,11 +39,14 @@ $con = $db->conectar();
 
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">Catalogo</a>
+                    <li class="nav-item">
+                            <a href="index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contacto</a>
+                            <a href="contacto.php" class="nav-link">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="registro.php" class="nav-link">Registro</a>
                         </li>
                     </ul>
                     <a href="checkout.php" class="btn btn-primary">
@@ -61,13 +64,13 @@ $con = $db->conectar();
             <ul>
                 <li>Email: contacto@dragonimports.com</li>
                 <li>Teléfono: +123 456 7890</li>
-                <li>Dirección: Calle Falsa 123, Ciudad, País</li>
+                <li>Dirección: Calle Peru 123, Lima, Peru</li>
             </ul>
             <h2>Desarrolladores</h2>
             <p>Nuestro equipo de desarrolladores está compuesto por:</p>
             <ul>
-                <li>Desarrollador1 - Ubicación: Ciudad A</li>
-                <li>Desarrollador2 - Ubicación: Ciudad B</li>
+                <li>Irvin Estuardo Cazorla Macedo</li>
+                <li>Ana Paula Viviana Garzon Mendoza</li>
             </ul>
         </div>
     </main>

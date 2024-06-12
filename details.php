@@ -112,10 +112,10 @@ if ($id == '' || $token == '') {
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">Catalogo</a>
+                            <a href="index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contacto</a>
+                            <a href="contacto.php" class="nav-link">Contacto</a>
                         </li>
                     </ul>
                     <a href="checkout.php" class="btn btn-primary">
@@ -206,7 +206,7 @@ if ($id == '' || $token == '') {
                     </div>
 
                     <div class="d-grid gap-3 col-10 mx-auto">
-                        <buton class="btn btn-primary" type="button">Comprar Ahora</buton>
+                        <a href="checkout.php" class="btn btn-primary">Comprar Ahora</a>
                         <buton class="btn btn-outline-primary" id="btnAgregar" type="button">Agregar al carrito</buton>
                     </div>
                 </div>
@@ -224,9 +224,11 @@ if ($id == '' || $token == '') {
     <!--ajax con api fitch-->
     <script>
 
-        let btnAgregar = document.getElementById("btnAgregar")
-        let inputCantidad = document.getElementById("cantidad").value
-        btnAgregar.onclick = addProducto(<?php echo $id; ?>, inputCantidad, <?php echo $token_tmp; ?>)
+        let btnAgregar = document.getElementById("btnAgregar");
+        btnAgregar.onclick = function () {
+            let inputCantidad = document.getElementById("cantidad").value;
+            addProducto(<?php echo $id; ?>, inputCantidad, '<?php echo $token_tmp; ?>');
+        };
 
         function addProducto(id, cantidad, token) {
             let url = 'clases/carrito.php'

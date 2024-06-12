@@ -107,11 +107,14 @@ if (!empty($_POST)) {
 
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">Catalogo</a>
+                    <li class="nav-item">
+                            <a href="index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contacto</a>
+                            <a href="contacto.php" class="nav-link">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="registro.php" class="nav-link">Registro</a>
                         </li>
                     </ul>
                     <a href="checkout.php" class="btn btn-primary">
