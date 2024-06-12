@@ -1,0 +1,114 @@
+<pre>Array
+(
+    [detalles] => Array
+        (
+            [id] => 13U83860TB700215R
+            [intent] => CAPTURE
+            [status] => COMPLETED
+            [purchase_units] => Array
+                (
+                    [0] => Array
+                        (
+                            [reference_id] => default
+                            [amount] => Array
+                                (
+                                    [currency_code] => USD
+                                    [value] => 348.00
+                                )
+
+                            [payee] => Array
+                                (
+                                    [email_address] => tiendaunisimon@gmail.com
+                                    [merchant_id] => UD93PUAXD49AG
+                                )
+
+                            [shipping] => Array
+                                (
+                                    [name] => Array
+                                        (
+                                            [full_name] => John Doe
+                                        )
+
+                                    [address] => Array
+                                        (
+                                            [address_line_1] => Free Trade Zone
+                                            [admin_area_2] => Bogota
+                                            [admin_area_1] => Bogota
+                                            [postal_code] => 110111
+                                            [country_code] => CO
+                                        )
+
+                                )
+
+                            [payments] => Array
+                                (
+                                    [captures] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [id] => 01E09584XP1916336
+                                                    [status] => COMPLETED
+                                                    [amount] => Array
+                                                        (
+                                                            [currency_code] => USD
+                                                            [value] => 348.00
+                                                        )
+
+                                                    [final_capture] => 1
+                                                    [seller_protection] => Array
+                                                        (
+                                                            [status] => ELIGIBLE
+                                                            [dispute_categories] => Array
+                                                                (
+                                                                    [0] => ITEM_NOT_RECEIVED
+                                                                    [1] => UNAUTHORIZED_TRANSACTION
+                                                                )
+
+                                                        )
+
+                                                    [create_time] => 2024-06-09T09:17:25Z
+                                                    [update_time] => 2024-06-09T09:17:25Z
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [payer] => Array
+                (
+                    [name] => Array
+                        (
+                            [given_name] => John
+                            [surname] => Doe
+                        )
+
+                    [email_address] => sb-u06lm30795707@business.example.com
+                    [payer_id] => QHYBTSPWUSLYJ
+                    [address] => Array
+                        (
+                            [country_code] => CO
+                        )
+
+                )
+
+            [create_time] => 2024-06-09T09:17:16Z
+            [update_time] => 2024-06-09T09:17:25Z
+            [links] => Array
+                (
+                    [0] => Array
+                        (
+                            [href] => https://api.sandbox.paypal.com/v2/checkout/orders/13U83860TB700215R
+                            [rel] => self
+                            [method] => GET
+                        )
+
+                )
+
+        )
+
+)
+</pre>
